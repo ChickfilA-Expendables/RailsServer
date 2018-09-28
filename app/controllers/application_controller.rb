@@ -1,7 +1,12 @@
 class ApplicationController < ActionController::Base
   
   def hello
-    render html: "Mamma Mia"
-    render html: "wassup fam"
+    @value = "0"
+    render 'layouts/application'
+  end
+  
+  def update
+    @value = params[:value]
+    render 'layouts/application'
   end
 end

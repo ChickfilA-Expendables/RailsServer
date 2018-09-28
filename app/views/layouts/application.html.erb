@@ -1,15 +1,46 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>CfaApp</title>
+    <title>Gauges as Components</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
-    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <%= stylesheet_link_tag    '/assets/gauge.min.js', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag '/assets/gauge.min.js', 'data-turbolinks-track': 'reload' %>
   </head>
-
   <body>
-    <%= yield %>
+    <%= @value %>
+    
+    <!-- Injecting radial gauge -->
+    <canvas data-type="radial-gauge"
+        data-width="400"
+        data-height="400"
+        data-units="Fullness"
+        data-title="%"
+        data-value="<%= @value %>"
+        data-min-value="0"
+        data-max-value="100"
+        data-major-ticks="0,20,40,60,80,100"
+        data-minor-ticks="2"
+        data-stroke-ticks="false"
+        data-highlights='[
+            { "from": 0, "to": 25, "color": "rgba(229, 43, 43, .85)" },
+            { "from": 25, "to": 75, "color": "rgba(193, 193, 5, .85)" },
+            { "from": 75, "to": 100, "color": "rgba(28, 165, 37, .85)" }
+        ]'
+        data-color-plate="#222"
+        data-color-major-ticks="#f5f5f5"
+        data-color-minor-ticks="#ddd"
+        data-color-title="#fff"
+        data-color-units="#ccc"
+        data-color-numbers="#eee"
+        data-color-needle-start="rgba(240, 128, 128, 1)"
+        data-color-needle-end="rgba(255, 160, 122, .9)"
+        data-value-box="true"
+        data-animation-rule="bounce"
+        data-animation-duration="500"
+        data-font-value="Led"
+        data-animated-value="true">
+    </canvas>
   </body>
 </html>
