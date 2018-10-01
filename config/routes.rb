@@ -1,4 +1,4 @@
 Rails.application.routes.draw do
+  resources :data
   root 'application#hello'
-  get '/update/:value', to: 'application#update'
 end
