@@ -6,6 +6,11 @@ class DataController < ApplicationController
   # GET /data.json
   def index
     @data = Datum.all
+    respond_to do |format|
+      format.html
+      format.js
+      format.xml { render xml: @data }
+    end
   end
 
   # GET /data/1
