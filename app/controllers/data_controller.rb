@@ -5,7 +5,7 @@ class DataController < ApplicationController
   # GET /data
   # GET /data.json
   def index
-    @data = Datum.all
+    @data = Datum.first
     respond_to do |format|
       format.html
       format.js
