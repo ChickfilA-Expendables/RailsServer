@@ -6,4 +6,4 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
-Data.create(name: "Lemonade", value: 0)
+Datum.create(name: "Lemonade", value: 0)
