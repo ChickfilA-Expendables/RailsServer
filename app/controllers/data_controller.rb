@@ -9,7 +9,7 @@ class DataController < ApplicationController
     respond_to do |format|
       format.html
       format.js
-      format.xml { render xml: @data }
+      format.xml { render xml => @data.to_xml }
     end
   end
 
