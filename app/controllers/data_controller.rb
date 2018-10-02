@@ -44,7 +44,7 @@ class DataController < ApplicationController
   # PATCH/PUT /data/1.json
   def update
     respond_to do |format|
-      @datum.update(value: :value)
+      @datum.update(value: params[:value])
       @value = @datum.value
       render 'layouts/application'
     end
