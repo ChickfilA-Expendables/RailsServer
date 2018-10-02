@@ -17,8 +17,8 @@ class DataController < ApplicationController
   # GET /data/1
   # GET /data/1.json
   def show
-    @value = params[:value]
-    render 'layouts/application'
+    respond_to do |format|
+      format.json
   end
 
   # GET /data/new
