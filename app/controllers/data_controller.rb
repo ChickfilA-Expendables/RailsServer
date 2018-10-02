@@ -9,6 +9,7 @@ class DataController < ApplicationController
     respond_to do |format|
       format.html
       format.js
+      format.json
       format.xml { render xml: @data }
     end
   end
