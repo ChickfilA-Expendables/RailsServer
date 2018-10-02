@@ -43,10 +43,10 @@ class DataController < ApplicationController
   # PATCH/PUT /data/1
   # PATCH/PUT /data/1.json
   def update
+    @datum.update(value: params[:value])
     respond_to do |format|
-      @datum.update(value: params[:value])
-      @value = @datum.value
-      render 'layouts/application'
+      format.html { redirect_to data_url, notice: 'Datum was successfully updated.' }
+      format.json { head :no_content }
     end
   end
 
