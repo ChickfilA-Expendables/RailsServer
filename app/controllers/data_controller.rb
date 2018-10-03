@@ -8,7 +8,6 @@ class DataController < ApplicationController
     @data = Datum.all
     respond_to do |format|
       format.html
-      format.js
       format.json
       format.xml { render xml: @data }
     end
@@ -18,7 +17,8 @@ class DataController < ApplicationController
   # GET /data/1.json
   def show
     respond_to do |format|
-      format.json
+      format.json { render json: @datum }
+    end
   end
 
   # GET /data/new
