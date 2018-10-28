@@ -57,7 +57,9 @@
     function animateGauges() {
       document.gauges.forEach(function(gauge) {
         timers.push(setInterval(function() {
-          gauge.value = <%=@value%>;
+          gauge.value = Math.random() *
+                (gauge.options.maxValue - gauge.options.minValue) +
+                gauge.options.minValue;
         }, gauge.animation.duration + 500));
       });
     }
