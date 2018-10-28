@@ -1,6 +1,5 @@
 class ApplicationController < ActionController::Base
   before_action :set_datum, only: [:show, :edit, :update, :destroy]
-  skip_before_action :verify_authenticity_token
   
   def hello
     @value = @datum[:value]
