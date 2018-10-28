@@ -16,8 +16,10 @@ class DataController < ApplicationController
   # GET /data/1
   # GET /data/1.json
   def show
+    @value = @datum[:value]
     respond_to do |format|
       format.json { render json: @datum }
+      format.html
     end
   end
 
