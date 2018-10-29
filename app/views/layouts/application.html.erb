@@ -8,8 +8,8 @@
     <%= stylesheet_link_tag    '/assets/gauge.min.js', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag '/assets/gauge.min.js', 'data-turbolinks-track': 'reload' %>
   </head>
-  <body onload="animateGauges()">
-    <%= @value %>
+  <body>
+    <%= 0 %>
     
     <!-- Injecting radial gauge -->
     <canvas data-type="radial-gauge"
@@ -17,7 +17,7 @@
       data-height="400"
       data-units="Fullness"
       data-title="%"
-      data-value="<%= @value %>"
+      data-value=<%= 0 %>
       data-min-value="0"
       data-max-value="100"
       data-major-ticks="0,20,40,60,80,100"
@@ -44,29 +44,42 @@
     </canvas>
     
     <script>
-    if (!Array.prototype.forEach) {
-      Array.prototype.forEach = function(cb) {
-        var i = 0, s = this.length;
-        for (; i < s; i++) {
-          cb && cb(this[i], i, this);
-        }
-      }
-    }
+    var gaugeElement = document.getElementsByTagName('canvas')[0];
+    //
+    ////var update_loop = setInterval(Main, 3000);
+    //
 
-    var timers = [];
-    function animateGauges() {
-      document.gauges.forEach(function(gauge) {
-        timers.push(setInterval(function() {
-          gauge.value = <%= @value %>
-        }, gauge.animation.duration + 500));
-      });
-    }
+    //var request = new XMLHttpRequest();
+    //request.open('GET', 'https://young-anchorage-97125.herokuapp.com/data/1.json', true);
+    //  
+    //request.onload = function() {
+    //  var data = JSON.parse(this.response);
+    //  gaugeElement.setAttribute('data-value', data.value);
+    //};
+    //request.send();
+    
+    let url = 'https://young-anchorage-97125.herokuapp.com/data/1.json';
 
-    function stopGaugesAnimation() {
-      timers.forEach(function(timer) {
-        clearInterval(timer);
-      });
-    }
+    fetch(url)
+      .then(res => res.json())
+      .then((out) => {
+          gaugeElement.setAttribute('data-value', out.value);
+      })
+      .catch(err => { throw err });
+
+
+    //Main();
+    //
+    //function Main() {
+    //  var request = new XMLHttpRequest();
+    //  request.open('GET', 'https://young-anchorage-97125.herokuapp.com/data/1.json', true);
+    //    
+    //  request.onload = function() {
+    //    var data = JSON.parse(this.response);
+    //    gaugeElement.setAttribute('data-value', data.value);
+    //  }
+    //  request.send();
+    //}
     </script>
     
   </body>
