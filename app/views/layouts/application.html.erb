@@ -44,42 +44,24 @@
     </canvas>
     
     <script>
-    var gaugeElement = document.getElementsByTagName('canvas')[0];
-    //
-    ////var update_loop = setInterval(Main, 3000);
-    //
 
-    //var request = new XMLHttpRequest();
-    //request.open('GET', 'https://young-anchorage-97125.herokuapp.com/data/1.json', true);
-    //  
-    //request.onload = function() {
-    //  var data = JSON.parse(this.response);
-    //  gaugeElement.setAttribute('data-value', data.value);
-    //};
-    //request.send();
+    Main();
     
-    let url = 'https://young-anchorage-97125.herokuapp.com/data/1.json';
+    function Main() {
+      var gaugeElement = document.getElementsByTagName('canvas')[0];
+    
+      var update_loop = setInterval(Main, 3000);
+    
+    
+      let url = 'https://young-anchorage-97125.herokuapp.com/data/1.json';
 
-    fetch(url)
-      .then(res => res.json())
-      .then((out) => {
+      fetch(url)
+        .then(res => res.json())
+        .then((out) => {
           gaugeElement.setAttribute('data-value', out.value);
-      })
-      .catch(err => { throw err });
-
-
-    //Main();
-    //
-    //function Main() {
-    //  var request = new XMLHttpRequest();
-    //  request.open('GET', 'https://young-anchorage-97125.herokuapp.com/data/1.json', true);
-    //    
-    //  request.onload = function() {
-    //    var data = JSON.parse(this.response);
-    //    gaugeElement.setAttribute('data-value', data.value);
-    //  }
-    //  request.send();
-    //}
+        })
+        .catch(err => { throw err });
+    }
     </script>
     
   </body>
