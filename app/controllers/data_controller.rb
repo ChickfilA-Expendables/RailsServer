@@ -55,7 +55,7 @@ class DataController < ApplicationController
     @value = params[:value]
     respond_to do |format|
       format.html { redirect_to data_url, notice: 'Datum was successfully updated.' }
-      format.json { render :show }
+      format.json { head :no_content }
     end
   end
 
