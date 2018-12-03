@@ -42,37 +42,6 @@
       data-animated-value="true">
     </canvas>
     
-    <canvas data-type="radial-gauge"
-      data-width="400"
-      data-height="400"
-      data-units="Ketchup"
-      data-title="%"
-      data-value=<%= 0 %>
-      data-min-value="0"
-      data-max-value="100"
-      data-major-ticks="0,20,40,60,80,100"
-      data-minor-ticks="2"
-      data-stroke-ticks="false"
-      data-highlights='[
-          { "from": 0, "to": 25, "color": "rgba(229, 43, 43, .85)" },
-          { "from": 25, "to": 75, "color": "rgba(193, 193, 5, .85)" },
-          { "from": 75, "to": 100, "color": "rgba(28, 165, 37, .85)" }
-      ]'
-      data-color-plate="#222"
-      data-color-major-ticks="#f5f5f5"
-      data-color-minor-ticks="#ddd"
-      data-color-title="#fff"
-      data-color-units="#ccc"
-      data-color-numbers="#eee"
-      data-color-needle-start="rgba(240, 128, 128, 1)"
-      data-color-needle-end="rgba(255, 160, 122, .9)"
-      data-value-box="true"
-      data-animation-rule="bounce"
-      data-animation-duration="500"
-      data-font-value="Led"
-      data-animated-value="true">
-    </canvas>
-    
     <script>
     
     var update_loop = setInterval(Main, 1000);
@@ -81,7 +50,6 @@
     
     function Main() {
       var lemonadeGauge = document.getElementsByTagName('canvas')[0];
-      var ketchupGauge = document.getElementsByTagName('canvas')[1];
 
       let lemonUrl = 'https://young-anchorage-97125.herokuapp.com/data/1.json';
       let ketchupUrl = 'https://young-anchorage-97125.herokuapp.com/data/3.json';
@@ -90,13 +58,6 @@
         .then(res => res.json())
         .then((out) => {
           lemonadeGauge.setAttribute('data-value', out.value);
-        })
-        .catch(err => { throw err });
-        
-      fetch(ketchupUrl)
-        .then(res => res.json())
-        .then((out) => {
-          ketchupGauge.setAttribute('data-value', out.value);
         })
         .catch(err => { throw err });
       
